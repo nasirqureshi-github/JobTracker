@@ -53,7 +53,12 @@ export default function Dashboard() {
   return (
     <AppShell>
       <Page
-        title={`Good to see you${user?.name ? `, ${user.name}` : ""}`}
+        title={
+          <>
+            Good to see you
+            {user?.name && <span className="text-blue-600">, {user.name}</span>}
+          </>
+        }
         subtitle="Here’s how your job search is moving."
       />
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-6">

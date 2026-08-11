@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import AppShell from "../../components/AppShell";
 import Page from "../../components/Page";
 import { api } from "../../services/api";
+import { useAuth } from "../../hooks/useAuth";
 import StatusBadge from "../../components/StatusBadge";
 import {
   Briefcase,
@@ -22,6 +23,7 @@ import {
 } from "recharts";
 export default function Dashboard() {
   const [d, setD] = useState(null);
+  const { user } = useAuth();
   useEffect(() => {
     api("/dashboard/stats")
       .then(setD)
@@ -51,7 +53,7 @@ export default function Dashboard() {
   return (
     <AppShell>
       <Page
-        title="Good to see you"
+        title={`Good to see you${user?.name ? `, ${user.name}` : ""}`}
         subtitle="Here’s how your job search is moving."
       />
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-6">

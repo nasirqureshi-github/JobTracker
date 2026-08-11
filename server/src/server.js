@@ -17,7 +17,7 @@ app.use(express.json({ limit: "1mb" }));
 app.get("/", (req, res) => {
   res.json({
     success: true,
-    message: "JobTracker API is running 🚀",
+    message: "JobTracker API is running",
   });
 });
 

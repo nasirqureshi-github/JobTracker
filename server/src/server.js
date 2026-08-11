@@ -13,6 +13,14 @@ app.use(helmet());
 app.use(cors({ origin: process.env.CLIENT_URL || "http://localhost:3000" }));
 app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 300 }));
 app.use(express.json({ limit: "1mb" }));
+
+app.get("/", (req, res) => {
+  res.json({
+    success: true,
+    message: "JobTracker API is running 🚀",
+  });
+});
+
 app.get("/api/health", (q, s) =>
   s.json({ success: true, message: "JobTracker API online" }),
 );
